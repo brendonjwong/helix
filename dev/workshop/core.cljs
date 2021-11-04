@@ -2,15 +2,23 @@
   (:require [helix.core :as helix :refer [$ <> defnc]]
             [helix.dom :as d]
             [helix.hooks :as hooks]
+            [foo]
             ["react" :as r]
             ["react-dom/server" :as rds]
             [devcards.core :as dc :include-macros true]))
+
+
+(def bar foo/private-comp)
 
 
 (defnc props-test
   [props]
   (d/div
    (d/div "props test")
+   ($ foo/public-comp)
+   ($ foo/private-comp)
+   (d/div (foo/bar))
+
    (for [[k v] props]
      (d/div
       {:key k}
