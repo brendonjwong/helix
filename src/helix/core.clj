@@ -272,6 +272,15 @@
          ~display-name)))
 
 
+(defmacro defnc-
+  "Creates a new functional React component.
+
+  Same as `defnc`, yielding a non-public def."
+  [display-name & form-body]
+  `(defnc ~(vary-meta (symbol display-name) assoc :private true)
+     ~@form-body))
+
+
 ;;
 ;; Custom hooks
 ;;
