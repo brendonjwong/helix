@@ -10,12 +10,12 @@
 
 (defnc- private-comp
   []
-  (d/div "bye"))
+  (d/div "private"))
 
 
 (defn- bar
   []
-  1)
+  "private function")
 
 
 (prn "METADATA!!!" (meta #'private-comp))
@@ -24,4 +24,4 @@
 
 (defnc public-comp
   []
-  (d/div "hi"))
+  (d/div "public"))
